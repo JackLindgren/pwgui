@@ -3,7 +3,7 @@ from Tkinter import *
 # this will explain roughly how to do pages
 # http://stackoverflow.com/questions/14817210
 master = Tk()
-
+#asdf
 entries = []
 
 nLabel = Label(master, text="Name")
