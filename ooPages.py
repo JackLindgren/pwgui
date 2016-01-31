@@ -15,10 +15,7 @@ class LoginScreen(Page):
 		Page.__init__(self, *args, **kwargs)
 
 		# using trace on the status as a wonky way to get changes when a form is submitted
-		# self.status = tk.IntVar()
-		# self.status.set(1)
-		# print self.status.get()
-
+		
 		self.status = tk.StringVar()
 		self.status.set("working")
 		print self.status.get()
@@ -36,9 +33,10 @@ class LoginScreen(Page):
 				print entries
 				self.status.set("done")
 				print self.status.get()
-				# self.status.set(0)	# change the status - this will prompt trace, which will call to go to the success screen
-									# we only want to change the status if the form was submitted
-									# otherwise, let the status stay the same	
+				# change the status - this will prompt trace, which will call to go to the success screen
+				# we only want to change the status if the form was submitted
+				# otherwise, let the status stay the same	
+		
 		# labels
 		nLabel = tk.Label(self, text="Name")
 		eLabel = tk.Label(self, text="Email")
@@ -80,7 +78,6 @@ class SuccessScreen(Page):
 		continueButton = tk.Button(self, text="continue", width=10, command=continueGoing)
 		continueButton.pack()
 
-
 class NextScreen(Page):
 	def __init__(self, *args, **kwargs):
 		Page.__init__(self, *args, **kwargs)
@@ -115,7 +112,7 @@ class MainView(tk.Frame):
 		success.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 		third.place(in_=container, 	 x=0, y=0, relwidth=1, relheight=1)
 
-		login.status.trace('w', goToSuccess)		# if login status is changed, go to success
+		login.status.trace('w', goToSuccess)	# if login status is changed, go to success
 		success.status.trace('w', afterLogin)	# if succes's status is changed, return to login
 
 		login.show()
